@@ -25,6 +25,9 @@ public  abstract  class RVBaseAdapter <C extends RVBaseCell> extends RecyclerVie
         addAll(data);
         notifyDataSetChanged();
     }
+    public List<C> getData() {
+        return mData;
+    }
     @Override
     public RVBaseViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         for (int i=0;i<getItemCount();i++){
@@ -69,12 +72,12 @@ public  abstract  class RVBaseAdapter <C extends RVBaseCell> extends RecyclerVie
     public void add(C cell){
         mData.add(cell);
         int index=mData.indexOf(cell);
-        notifyDataSetChanged();
+        notifyItemChanged(index);
     }
 
     public void add(int index,C cell){
         mData.add(index,cell);
-        notifyDataSetChanged();
+        notifyItemChanged(index);
     }
 
     /**
